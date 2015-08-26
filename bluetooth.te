@@ -57,6 +57,5 @@ allow bluetooth ctl_dhcp_pan_prop:property_service set;
 
 # Superuser capabilities.
 # bluetooth requires net_admin and wake_alarm.
-# wcnss_filter requires dac_override, setgid and setuid
-neverallow bluetooth self:capability ~{ net_admin dac_override setgid setuid };
+neverallow bluetooth self:capability ~net_admin;
 neverallow bluetooth self:capability2 ~wake_alarm;
