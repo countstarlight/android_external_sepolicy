@@ -107,6 +107,3 @@ allow mediaserver drmserver:drmservice {
     finalizeDecryptUnit
     pread
 };
-
-# V4a audio effect hook
-allow mediaserver mediaserver_tmpfs:file execute;

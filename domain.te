@@ -35,7 +35,7 @@ allow domain self:lnk_file r_file_perms;
 allow domain self:{ fifo_file file } rw_file_perms;
 allow domain self:unix_dgram_socket { create_socket_perms sendto };
 allow domain self:unix_stream_socket { create_stream_socket_perms connectto };
-#allow domain domain:{ unix_dgram_socket unix_stream_socket } unpriv_unix_sock_ioctls;
+allow domain domain:{ unix_dgram_socket unix_stream_socket } unpriv_unix_sock_ioctls;
 
 # Inherit or receive open files from others.
 allow domain init:fd use;
@@ -195,6 +195,7 @@ neverallow {
   -init
   -ueventd
   -vold
+  -proj_dev_setup
 } self:capability mknod;
 
 attribute rmt_placeholder;
@@ -297,7 +298,6 @@ neverallow {
     userdebug_or_eng(`-su')
     -system_server
     -zygote
-    -mediaserver
 } { file_type -system_file -exec_type }:file execute;
 neverallow {
     domain
